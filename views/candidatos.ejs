@@ -1,0 +1,75 @@
+<%- include ('partials/header.ejs'); %>
+<body>
+
+    <%- include ('partials/navbar.ejs'); %>
+
+          <div class="container mt-5 bg-light border">
+            <h1 class="mb-4 text-center">Candidatos inscritos</h1>
+            <p>Prezado(a) Candidato(a),
+
+                Gostaríamos de informar que ao enviar sua inscrição para o nosso concurso, queremos assegurar que todas as informações fornecidas serão tratadas com a máxima confidencialidade e respeito à sua privacidade.
+                
+                Entendemos a importância de manter suas informações pessoais seguras e protegidas. Por isso, garantimos que todos os campos preenchidos, incluindo <b>CPF</b>, <b>RG</b>, <b>telefone</b>, <b>idade</b> e <b> endereço</b> serão guardados sigilosamente em nosso banco de dados.
+                
+                Nossa equipe está empenhada em seguir as melhores práticas de segurança de dados para garantir a integridade e a confidencialidade de suas informações em conformidade com as leis e regulamentações aplicáveis.
+                
+                Agradecemos sua confiança em nós e estamos à disposição para quaisquer dúvidas ou preocupações adicionais que possa ter.
+                
+                Atenciosamente,
+                
+                Vunesp.</p> 
+                <div class="card">
+                    <img max-width="100%" src="https://documento.vunesp.com.br/documento/streambanner/NTc1NTU0Ng==" alt="">
+                    
+                </div><br><br>
+                <h2 class="text-center">Lista dos candidatos inscritos</h2><br>
+            <table class="table border">
+              <thead>
+                <tr>
+                  <th scope="col">Número de inscrição</th>
+                  <th scope="col">Nome</th>
+                  <th scope="col">E-mail</th>
+                  <th scope="col">Idade</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% candidatos.forEach((candidato) => { %>
+                  <tr style="background-color: #f2d974;">
+                    <td class="bg-light"><%= candidato.id %></td>
+                    <td class="bg-light"><%= candidato.nome %></td>
+                    <td class="bg-light"><%= candidato.email %></td>
+                    <td class="bg-light"><%= candidato.idade %></td>
+                  </tr>
+                <% }) %>
+              </tbody>
+            </table>
+          </div>
+
+          <script>
+            document.addEventListener('DOMContentLoaded', function() {
+              var scrollToTopButton = document.getElementById('scrollToTop');
+        
+              // Mostrar o botão quando o usuário rolar a página para baixo
+              window.addEventListener('scroll', function() {
+                if (window.scrollY > 100) {
+                  scrollToTopButton.style.display = 'block';
+                } else {
+                  scrollToTopButton.style.display = 'none';
+                }
+              });
+        
+              // Scroll suave para o topo da página
+              scrollToTopButton.addEventListener('click', function() {
+                window.scrollTo({
+                  top: 0,
+                  behavior: 'smooth'
+                });
+              });
+            });
+          </script>
+          
+    <button style="position: fixed; bottom: 20px; right: 20px; display: none;" id="scrollToTop" class="btn btn-danger"><box-icon name='up-arrow-alt' ></box-icon></button>
+
+</body>
+
+<%- include ('partials/footer.ejs'); %>
